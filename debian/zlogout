@@ -1,1 +1,13 @@
 # /etc/zsh/zlogout: system-wide .zlogout file for zsh(1).
+
+() {
+    setopt localoptions EXTENDED_GLOB CSH_NULL_GLOB
+
+    if [[ -d /etc/zsh/zlogout.d ]]; then
+	for zlogout_snipplet in /etc/zsh/zlogout.d/[0-9][0-9]-*[^~] ; do
+	    if [[ "${zlogout_snipplet:e}" != zwc ]]; then
+		source $zlogout_snipplet
+	    fi
+	done
+    fi
+}

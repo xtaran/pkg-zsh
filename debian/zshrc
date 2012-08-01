@@ -86,3 +86,15 @@ zstyle ':completion:*:sudo:*' command-path /usr/local/sbin \
 
 (( ${+aliases[run-help]} )) && unalias run-help
 autoload -Uz run-help
+
+() {
+    setopt localoptions EXTENDED_GLOB CSH_NULL_GLOB
+
+    if [[ -d /etc/zsh/zshrc.d ]]; then
+	for zshrc_snipplet in /etc/zsh/zshrc.d/[0-9][0-9]-*[^~] ; do
+	    if [[ "${zshrc_snipplet:e}" != zwc ]]; then
+		source $zshrc_snipplet
+	    fi
+	done
+    fi
+}

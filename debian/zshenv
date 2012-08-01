@@ -16,3 +16,15 @@ if [[ -z "$PATH" || "$PATH" == "/bin:/usr/bin" ]]
 then
 	export PATH="/usr/local/bin:/usr/bin:/bin:/usr/games"
 fi
+
+() {
+    setopt localoptions EXTENDED_GLOB CSH_NULL_GLOB
+
+    if [[ -d /etc/zsh/zshenv.d ]]; then
+	for zshenv_snipplet in /etc/zsh/zshenv.d/[0-9][0-9]-*[^~] ; do
+	    if [[ "${zshenv_snipplet:e}" != zwc ]]; then
+		source $zshenv_snipplet
+	    fi
+	done
+    fi
+}

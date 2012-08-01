@@ -7,3 +7,15 @@
 # msgs, from, etc.)
 #
 # Global Order: zshenv, zprofile, zshrc, zlogin
+
+() {
+    setopt localoptions EXTENDED_GLOB CSH_NULL_GLOB
+
+    if [[ -d /etc/zsh/zlogin.d ]]; then
+	for zlogin_snipplet in /etc/zsh/zlogin.d/[0-9][0-9]-*[^~] ; do
+	    if [[ "${zlogin_snipplet:e}" != zwc ]]; then
+		source $zlogin_snipplet
+	    fi
+	done
+    fi
+}
