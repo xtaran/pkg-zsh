@@ -1,0 +1,26 @@
+#!/bin/zsh -f
+
+# This wrapper's sole purpose is to ease the migration of zsh's binary
+# location from /bin/zsh4 to /bin/zsh5 between Debian Wheezy and Jessie.
+#
+# See https://bugs.debian.org/707760 for reasoning, details and
+# discussion.
+
+if [[ $0 == *zsh4* ]]; then
+    static=''
+    if [[ $0 == *static* ]]; then
+        static=-static
+    fi
+
+    echo ""
+    echo "    ####"
+    echo "    ####  $0 is deprecated, please switch to /bin/zsh${static} (or /usr/bin/zsh)"
+    if [[ "$1" == "-l" ]]; then
+        echo '    ####  Use "chsh -s '"/bin/zsh${static}"'" to change your login shell'
+    fi
+    echo "    ####  This command ($0) will disappear eventually!"
+    echo "    ####"
+    echo ""
+fi 1>&2
+
+exec "/bin/zsh${static}" "$@"

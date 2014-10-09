@@ -200,7 +200,8 @@ binary-arch-static: build-static
 	dh_install           -pzsh-static
 	dh_strip             -pzsh-static
 
-	mv debian/zsh-static/bin/zsh debian/zsh-static/bin/zsh5-static
+	mv debian/zsh-static/bin/zsh  debian/zsh-static/bin/zsh5-static
+	mv debian/zsh-static/bin/zsh4 debian/zsh-static/bin/zsh4-static
 
 	dh_installchangelogs -pzsh-static
 

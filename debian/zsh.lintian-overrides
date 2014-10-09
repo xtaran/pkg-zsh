@@ -2,3 +2,5 @@
 zsh: hardening-no-fortify-functions usr/lib*/zsh/*/zsh/zleparameter.so
 # False positive
 zsh: spelling-error-in-binary usr/lib/*/zsh/*/zsh/zle.so tEH the
+# Just a migration wrapper which is not meant to be used
+zsh: binary-without-manpage bin/zsh4
