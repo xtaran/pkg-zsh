@@ -23,4 +23,4 @@ if [[ $0 == *zsh4* ]]; then
     echo ""
 fi 1>&2
 
-exec "/bin/zsh${static}" "$@"
+exec "/bin/zsh5${static}" "$@"
