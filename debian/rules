@@ -228,11 +228,4 @@ binary-arch: binary-arch-dynamic binary-arch-static binary-arch-dev
 
 binary: binary-indep binary-arch binary-arch-static binary-arch-dev
 
-prebuild:
-	Util/preconfig
-	./configure
-	make -C Doc
-	make distclean
-	rm -rf autom4te.cache
-
-.PHONY: binary binary-arch binary-indep clean binary-arch-dynamic binary-arch-static prebuild binary-arch-dev
+.PHONY: binary binary-arch binary-indep clean binary-arch-dynamic binary-arch-static binary-arch-dev
