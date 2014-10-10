@@ -15,7 +15,7 @@ if [[ $0 == *zsh4* ]]; then
     echo ""
     echo "    ####"
     echo "    ####  $0 is deprecated, please switch to /bin/zsh${static} (or /usr/bin/zsh)"
-    if [[ "$1" == "-l" ]]; then
+    if [[ "$1" == "-l" || "$0" == -* ]]; then
         echo '    ####  Use "chsh -s '"/bin/zsh${static}"'" to change your login shell'
     fi
     echo "    ####  This command ($0) will disappear eventually!"
