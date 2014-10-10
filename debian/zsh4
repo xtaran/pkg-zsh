@@ -1,4 +1,4 @@
-#!/bin/zsh -f
+#!/bin/zsh5 -f
 
 # This wrapper's sole purpose is to ease the migration of zsh's binary
 # location from /bin/zsh4 to /bin/zsh5 between Debian Wheezy and Jessie.
