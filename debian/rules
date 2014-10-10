@@ -228,4 +228,9 @@ binary-arch: binary-arch-dynamic binary-arch-static binary-arch-dev
 
 binary: binary-indep binary-arch binary-arch-static binary-arch-dev
 
-.PHONY: binary binary-arch binary-indep clean binary-arch-dynamic binary-arch-static binary-arch-dev
+get-orig-source: version=$(shell git describe --tags --abbrev=0 --match='zsh-*' | sed -e 's/^zsh-//')
+get-orig-source:
+	git archive --format=tar --output=../zsh_$(version).orig.tar --prefix=zsh-$(version)/ zsh-$(version)
+	xz -7v ../zsh_$(version).orig.tar
+
+.PHONY: binary binary-arch binary-indep clean binary-arch-dynamic binary-arch-static binary-arch-dev get-orig-source
