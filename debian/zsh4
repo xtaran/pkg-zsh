@@ -6,9 +6,9 @@
 # See https://bugs.debian.org/707760 for reasoning, details and
 # discussion.
 
-if [[ $0 == *zsh4* ]]; then
+if [[ "$0" == *zsh4* ]]; then
     static=''
-    if [[ $0 == *static* ]]; then
+    if [[ "$0" == *static* ]]; then
         static=-static
     fi
 
