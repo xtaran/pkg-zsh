@@ -5,3 +5,4 @@ cherry-pick-a03227de-33405-vcs-info-make-sure-maxexports-is-set-when-vcs-info-se
 cherry-pick-22c4ea42-33403-be-conservative-about-redirecting-call-program-stderr-the-caller-may-have-already-done-so.patch
 cherry-pick-605a73e4-33429-disallow-non-integer-values-for-histsize-and-savehist-of-fc-p-and-fix-crash-on-zero-values-for-same.patch
 cherry-pick-521313b4-tests-for-workers-33429.patch
+cherry-pick-2d14c085-33445-fix-handling-of-s-when-combined-with-i-at-shell-invocation.patch
