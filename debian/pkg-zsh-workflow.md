@@ -120,19 +120,25 @@ the above can be largely automated if the patch applies to the current
 state of the debian branch.
 
     % patchname="cherry-pick-$shortcommitid-description-with-dashes"
-    % git show $commitid > debian/patches/$patchname
+    % git show $commitid | filterdiff -x a/ChangeLog > debian/patches/$patchname
     % sed -e '1 s/^commit/Origin: commit/' -i debian/patches/$patchname
     % echo $patchname >> debian/patches/series
+    % $EDITOR debian/patches/$patchname
+    % git add debian/patches/series debian/patches/$patchname
+    % git commit -v
 
 Patches from upstream will likely include changes to the ChangeLog
 file. Those changes will probably not apply cleanly, so just open the
-created patch file and delete all hunks that do changes in ChangeLog.
+created patch file and delete all hunks that do changes in
+ChangeLog. The `filterdiff` command above should catch that.
 
     % $EDITOR debian/patches/$patchname
 
 Check if the patch applies
 
     % quilt push
+
+All the above is mostly automated in `debian/bin/commit2patch`.
 
 ##### Finish import of the patch
 
