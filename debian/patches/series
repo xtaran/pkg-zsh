@@ -3,3 +3,4 @@ cherry-pick-9982ab6f-missing-changelog-entry
 cherry-pick-0f73b35f-33391-vcs-info-git-fix-applied-patch-detection-on-git-am.patch
 cherry-pick-a03227de-33405-vcs-info-make-sure-maxexports-is-set-when-vcs-info-set-is-called.patch
 cherry-pick-22c4ea42-33403-be-conservative-about-redirecting-call-program-stderr-the-caller-may-have-already-done-so.patch
+cherry-pick-605a73e4-33429-disallow-non-integer-values-for-histsize-and-savehist-of-fc-p-and-fix-crash-on-zero-values-for-same.patch

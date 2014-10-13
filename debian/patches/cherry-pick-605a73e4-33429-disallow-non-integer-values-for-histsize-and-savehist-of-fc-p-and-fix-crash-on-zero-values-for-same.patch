@@ -1,0 +1,60 @@
+Origin: commit 605a73e415772a1d74cff39212618c8f1d58297b
+Author: Barton E. Schaefer <schaefer@zsh.org>
+Date:   Fri Oct 10 23:12:57 2014 -0700
+Description: 33429: disallow non-integer values for HISTSIZE and SAVEHIST of "fc -p", and fix crash on zero values for same
+
+diff --git a/Src/builtin.c b/Src/builtin.c
+index 4a10c7d..5b711ed 100644
+--- a/Src/builtin.c
++++ b/Src/builtin.c
+@@ -1363,10 +1363,19 @@ bin_fc(char *nam, char **argv, Options ops, int func)
+ 	if (*argv) {
+ 	    hf = *argv++;
+ 	    if (*argv) {
+-		hs = zstrtol(*argv++, NULL, 10);
+-		if (*argv)
+-		    shs = zstrtol(*argv++, NULL, 10);
+-		else
++		char *check;
++		hs = zstrtol(*argv++, &check, 10);
++		if (*check) {
++		    zwarnnam("fc", "HISTSIZE must be an integer");
++		    return 1;
++		}
++		if (*argv) {
++		    shs = zstrtol(*argv++, &check, 10);
++		    if (*check) {
++			zwarnnam("fc", "SAVEHIST must be an integer");
++			return 1;
++		    }
++		} else
+ 		    shs = hs;
+ 		if (*argv) {
+ 		    zwarnnam("fc", "too many arguments");
+diff --git a/Src/hist.c b/Src/hist.c
+index 4660fd0..0831756 100644
+--- a/Src/hist.c
++++ b/Src/hist.c
+@@ -1110,8 +1110,11 @@ static void
+ putoldhistentryontop(short keep_going)
+ {
+     static Histent next = NULL;
+-    Histent he = keep_going? next : hist_ring->down;
+-    next = he->down;
++    Histent he = (keep_going || !hist_ring) ? next : hist_ring->down;
++    if (he)
++	next = he->down;
++    else
++	return;
+     if (isset(HISTEXPIREDUPSFIRST) && !(he->node.flags & HIST_DUP)) {
+ 	static zlong max_unique_ct = 0;
+ 	if (!keep_going)
+@@ -1151,7 +1154,7 @@ prepnexthistent(void)
+ 	freehistnode(&hist_ring->node);
+     }
+ 
+-    if (histlinect < histsiz) {
++    if (histlinect < histsiz || !hist_ring) {
+ 	he = (Histent)zshcalloc(sizeof *he);
+ 	if (!hist_ring)
+ 	    hist_ring = he->up = he->down = he;
