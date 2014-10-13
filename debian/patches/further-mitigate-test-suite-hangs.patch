@@ -1,0 +1,17 @@
+Origin: http://www.zsh.org/mla/workers/2014/msg01250.html
+Author: Bart Schaefer <schaefer@brasslantern.com>
+Bug-Debian: https://bugs.debian.org/759870
+Description: Add a sleep call which should prevent a race condition in coproc
+
+diff --git a/Test/A05execution.ztst b/Test/A05execution.ztst
+index ca97f4f..0b40a73 100644
+--- a/Test/A05execution.ztst
++++ b/Test/A05execution.ztst
+@@ -208,6 +208,7 @@ F:This similar test was triggering a reproducible failure with pipestatus.
+   print -u $ZTST_fd 'This test takes 5 seconds to fail...'
+   { printf "%d\n" {1..20000} } | ( read -e )
+   hang(){ printf "%d\n" {2..20000} | cat }; hang | ( read -e )
++  sleep 1 ;: avoid coproc exit race condition
+   print -p done
+   read -et 6 -p
+ 0:Bug regression: piping a shell construct to an external process may hang
