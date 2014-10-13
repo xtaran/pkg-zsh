@@ -202,6 +202,7 @@ binary-arch-static: build-static
 
 	mv debian/zsh-static/bin/zsh  debian/zsh-static/bin/zsh5-static
 	mv debian/zsh-static/bin/zsh4 debian/zsh-static/bin/zsh4-static
+	sed -e 's:#!/bin/zsh5:#!/bin/zsh5-static:' -i debian/zsh-static/bin/zsh4-static
 
 	dh_installchangelogs -pzsh-static
 
