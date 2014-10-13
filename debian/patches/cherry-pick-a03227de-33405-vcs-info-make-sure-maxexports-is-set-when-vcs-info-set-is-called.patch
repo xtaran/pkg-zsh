@@ -1,0 +1,19 @@
+Origin: commit a03227de23f623370ab6a6eaf8d22e8d9b1a3aae
+Author: Frank Terbeck <ft@bewatermyfriend.org>
+Date:   Thu Oct 9 18:09:36 2014 +0200
+Description: 33405: vcs_info: Make sure maxexports is set when VCS_INFO_set is called
+
+diff --git a/ChangeLog b/ChangeLog
+index 57850eb..b27895c 100644
+diff --git a/Functions/VCS_Info/vcs_info b/Functions/VCS_Info/vcs_info
+index 5a421df..4693869 100644
+--- a/Functions/VCS_Info/vcs_info
++++ b/Functions/VCS_Info/vcs_info
+@@ -94,6 +94,7 @@ vcs_info () {
+ 
+     for pat in ${dps} ; do
+         if [[ ${PWD} == ${~pat} ]] ; then
++            VCS_INFO_maxexports
+             [[ -n ${vcs_info_msg_0_} ]] && VCS_INFO_set --nvcs
+             return 0
+         fi
