@@ -1,3 +1,27 @@
+zsh (5.0.7-2) experimental; urgency=low
+
+  * [0e36f80d ff.] Workflow documentation: Many updates
+  * [438969ff] Add zsh4(-static) wrapper scripts to ease switch to zsh5
+    (Closes: #707760)
+  * [180ad946] Add lintian overrides for unusual-interpreter in zsh4
+    wrapper script
+  * [2bc52e92] Drop prebuild target from debian/rules (unused)
+  * [8ece55fe] Add a get-orig-source target to debian/rules
+  * [503d6807] Add debian/bin/commit2quilt for easier cherry-picking
+  * Cherry-pick a bunch of post-5.0.7 fixes from upstream:
+    + [46859b9c] a03227de/33405: vcs_info: Make sure maxexports is set
+      when VCS_INFO_set is called
+    + [849017f2] 22c4ea42/33403: be conservative about redirecting
+      _call_program stderr, the caller may have already done so
+    + [6f309d99] 605a73e4/33429: disallow non-integer values for HISTSIZE
+      and SAVEHIST of "fc -p", and fix crash on zero values for same
+    + [4a370a5f] 521313b4/33429: Tests for previous patch
+    + [adb27914] 2d14c085/33445: fix handling of -s when combined with -i
+      at shell invocation
+  * [35069efe] Add patch by Bart Schaefer which should further mitigate #759870
+
+ -- Axel Beckert <abe@debian.org>  Mon, 13 Oct 2014 23:15:06 +0200
+
 zsh (5.0.7-1) experimental; urgency=low
 
   * [208bdede] New upstream release
