@@ -4,3 +4,4 @@ zsh: hardening-no-fortify-functions usr/lib*/zsh/*/zsh/zleparameter.so
 zsh: spelling-error-in-binary usr/lib/*/zsh/*/zsh/zle.so tEH the
 # Just a migration wrapper which is not meant to be used
 zsh: binary-without-manpage bin/zsh4
+zsh: unusual-interpreter bin/zsh4 #!/bin/zsh5
