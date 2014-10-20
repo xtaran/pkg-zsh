@@ -1,6 +1,11 @@
 Zsh for Debian
 --------------
 
+You may find more uptodate information about Debian's zsh packages at
+https://wiki.debian.org/Zsh
+
+ -- Axel Beckert <abe@debian.org>, Mon, 20 Oct 2014 14:40:42 +0200
+
 This version of zsh has been compiled with support for maildir
 folders in MAIL and MAILPATH.
 
