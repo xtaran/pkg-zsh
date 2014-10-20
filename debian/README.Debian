@@ -9,7 +9,8 @@ https://wiki.debian.org/Zsh
 This version of zsh has been compiled with support for maildir
 folders in MAIL and MAILPATH.
 
-  -- Clint Adams <schizo@debian.org>
+ -- Clint Adams <schizo@debian.org>
+
 
 How to use the zsh-dbg package
 ------------------------------
@@ -35,7 +36,7 @@ Then execute:
 Now you can use the usual gdb commands like step / continue / ...
 to debug the Zsh process at source level.
 
-  -- Michael Prokop <mika@debian.org>
+ -- Michael Prokop <mika@debian.org>
 
 
 Load-path for functions from other packages
