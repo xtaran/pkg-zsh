@@ -1,3 +1,17 @@
+zsh (5.0.7-3) unstable; urgency=low
+
+  * Upload to unstable again
+  * [5409996b ff.] Remove zsh4 and zsh4-static from list of alternatives
+    in the according postinst scripts. Also raise priorities of zsh5 and
+    zsh5-static alternatives by 1 so that they have a higher priority than
+    the old ones. (Closes: #766015)
+  * [29ce7d34] Mention https://wiki.debian.org/Zsh in README.Debian
+  * [b33dd34f] Switch the zsh and zsh-common binary package stanzas in
+    debian/control to get README.Debian installed again. (dh_installdocs
+    installs it into the first binary package listed in debian/control.)
+
+ -- Axel Beckert <abe@debian.org>  Tue, 21 Oct 2014 02:39:51 +0200
+
 zsh (5.0.7-2) experimental; urgency=low
 
   * [0e36f80d ff.] Workflow documentation: Many updates
