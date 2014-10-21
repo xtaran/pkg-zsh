@@ -29,22 +29,6 @@ Homepage: http://www.zsh.org/
 Vcs-Git: git://anonscm.debian.org/collab-maint/zsh.git -b debian
 Vcs-Browser: https://anonscm.debian.org/cgit/collab-maint/zsh.git
 
-Package: zsh
-Architecture: any
-Depends: zsh-common (= ${source:Version}),
-         ${misc:Depends},
-         ${shlibs:Depends}
-Recommends: ${shlibs:Recommends}
-Suggests: zsh-doc
-Description: shell with lots of features
- Zsh is a UNIX command interpreter (shell) usable as an
- interactive login shell and as a shell script command
- processor. Of the standard shells, zsh most closely resembles
- ksh but includes many enhancements. Zsh has command-line editing,
- built-in spelling correction, programmable command completion,
- shell functions (with autoloading), a history mechanism, and a
- host of other features.
-
 Package: zsh-common
 Architecture: all
 Depends: ${misc:Depends}
@@ -62,6 +46,22 @@ Description: architecture independent files for Zsh
  .
  This package contains the common zsh files shared by all
  architectures.
+
+Package: zsh
+Architecture: any
+Depends: zsh-common (= ${source:Version}),
+         ${misc:Depends},
+         ${shlibs:Depends}
+Recommends: ${shlibs:Recommends}
+Suggests: zsh-doc
+Description: shell with lots of features
+ Zsh is a UNIX command interpreter (shell) usable as an
+ interactive login shell and as a shell script command
+ processor. Of the standard shells, zsh most closely resembles
+ ksh but includes many enhancements. Zsh has command-line editing,
+ built-in spelling correction, programmable command completion,
+ shell functions (with autoloading), a history mechanism, and a
+ host of other features.
 
 Package: zsh-doc
 Architecture: all
